@@ -7,9 +7,6 @@
 打完收工!
 
 
+[![BlijYQ.md.png](https://s1.ax1x.com/2020/10/27/BlijYQ.md.png)](https://imgchr.com/i/BlijYQ)
 
-![](src/assets/demo2.png)
-
-
-
-![](src/assets/demo.png)
+[![BlivWj.md.png](https://s1.ax1x.com/2020/10/27/BlivWj.md.png)](https://imgchr.com/i/BlivWj)
