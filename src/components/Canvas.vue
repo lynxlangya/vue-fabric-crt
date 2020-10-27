@@ -24,6 +24,7 @@ import TopSetting from './TopSetting'
 import { MouseMethod } from './js/MouseMethod'
 import { DrawMethods } from './js/DrawMethods'
 import { PolygonMethods } from './js/PolygonMethods'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Canvas',
   components: { TopSetting },
@@ -42,7 +43,7 @@ export default {
       /** 鼠标划过结束位置 */
       mouseTo: {},
       /** 图片路径 */
-      imgURL: 'https://imgchr.com/i/BpnHxA',
+      imgURL: 'https://imgchr.com/i/BlPTVU',
       /** 选择类型 */
       drawType: null,
       /** 绘制状态 */
@@ -66,6 +67,44 @@ export default {
       line: {},
       /** 属性参数 */
       attr: {}
+    }
+  },
+
+  computed: {
+    ...mapState({
+      imgObj: state => state.imgObj,
+      rows: state => state.rows
+    })
+  },
+  watch: {
+    rows(rows) {
+      let obj = this.canvas.getActiveObject()
+      if (obj !== null) {
+        obj.set({
+          ...rows,
+          // opacity: 0, // 透明度
+          // scaleX: 1,
+          // scaleY: 1
+          // angle: 0  // 旋转角度
+        })
+        // NICE: 注释掉的为动画效果
+        // obj.animate('scaleX', 2, {
+        //   onChange: this.canvas.renderAll.bind(this.canvas),
+        //   duration: 2000,
+        //   easing: fabric.util.ease.easeOutExpo
+        // })
+        // obj.animate('scaleY', 2, {
+        //   onChange: this.canvas.renderAll.bind(this.canvas),
+        //   duration: 2000,
+        //   easing: fabric.util.ease.easeOutExpo
+        // })
+        // obj.animate('opacity', 1, {
+        //   onChange: this.canvas.renderAll.bind(this.canvas),
+        //   duration: 2000,
+        //   easing: fabric.util.ease.easeOutExpo
+        // })
+        this.canvas.renderAll()
+      }
     }
   },
 
@@ -99,6 +138,7 @@ export default {
     ...MouseMethod,
     ...DrawMethods,
     ...PolygonMethods,
+    ...mapActions(['ClearImg', 'ChangeAttr']),
     /** 实例初始化 */
     init() {
       if (!this.canvas) return

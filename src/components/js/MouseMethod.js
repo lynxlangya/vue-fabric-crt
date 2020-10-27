@@ -11,10 +11,26 @@ export const MouseMethod = {
    * @desc 📝监听鼠标右键
    */
   mousedown(e) {
-    console.log(e)
-    if (e.target !== null) {
-      this.attr = { ...e.target }
-      console.log(this.attr)
+    /** 是否需要添加图片 */
+    if (this.imgObj.url !== '' && e.button !== 3) {
+      fabric.Image.fromURL(this.imgObj.url, img => {
+        img.set({
+          left: e.pointer.x, // 图片相对画布的左侧距离
+          top: e.pointer.y, // 图片相对画布的顶部距离
+          // angle: 0, // 图片旋转角度
+          opacity: 0.85, // 图片透明度
+          scaleX: 2,
+          scaleY: 2,
+          ...this.imgObj
+        })
+        this.canvas.add(img)
+      })
+      this.$nextTick(() => this.ClearImg())
+    }
+    /** 获取当前选中元素 */
+    if (e.target !== null && e.button !== 3) {
+      console.log(e.target)
+      this.ChangeAttr(e.target)
     }
     /** 右键开启拖拽 */
     if (e.button === 3) {
