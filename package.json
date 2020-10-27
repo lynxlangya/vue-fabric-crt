@@ -11,6 +11,7 @@
     "ant-design-vue": "^1.6.5",
     "core-js": "^3.6.5",
     "fabric": "^4.2.0",
+    "vcolorpicker": "^1.0.3",
     "vue": "^2.6.11"
   },
   "devDependencies": {

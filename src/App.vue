@@ -19,17 +19,17 @@ export default {
     Config
   },
   data() {
-    return {};
+    return {}
   },
 
   mounted() {},
 
-  methods: {},
-};
+  methods: {}
+}
 </script>
 <style lang="css" scoped>
 .crt-page {
   display: flex;
-  background:  rgb(226, 226, 226);
+  background: rgb(226, 226, 226);
 }
 </style>

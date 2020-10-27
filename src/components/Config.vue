@@ -5,11 +5,7 @@
         <span slot="tab">属 性</span>
         <h3 class="s-title">填充色</h3>
         <div style="height: 20px; margin-left: 12px;">
-          <a-tooltip
-            class="s-colorBlock"
-            v-for="(item, index) in ColorSetting"
-            :key="index"
-          >
+          <a-tooltip class="s-colorBlock" v-for="(item, index) in ColorSetting" :key="index">
             <template slot="title">
               {{ item.key }}
             </template>
@@ -18,10 +14,10 @@
             </a-tag>
           </a-tooltip>
         </div>
+        <colorPicker v-model="textColor" />
       </a-tab-pane>
       <a-tab-pane key="2">
         <span slot="tab">图 例</span>
-        敬请期待...
       </a-tab-pane>
       <a-tab-pane key="3">
         <span slot="tab">设 备</span>
@@ -40,30 +36,34 @@
  * @desc 📝配置
  * @copyright 🤝In me the tiger sniffs the rose.
  */
-import { ColorSetting } from './js/Color';
+import { ColorSetting } from './js/Color'
 export default {
   name: 'Config',
   data() {
     return {
       ColorSetting,
       primaryColor: '',
-    };
+      textColor: '#ff0000'
+    }
   },
 
   mounted() {},
 
   methods: {
     callback(key) {
-      console.log(key);
+      console.log(key)
     },
     changeColor(color) {
-      console.log(color);
+      console.log(color)
       this.primaryColor = color
-    },
-  },
-};
+    }
+  }
+}
 </script>
 <style lang="css" scoped>
+* >>> .ant-tabs-tabpane.ant-tabs-tabpane-active {
+  height: calc(100vh - 60px);
+}
 .s-style {
   width: calc(100% - 1390px);
   margin-left: 10px;

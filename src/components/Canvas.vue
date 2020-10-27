@@ -19,11 +19,11 @@
  * @desc 📝Canvas 图例配置
  * @copyright 🤝In me the tiger sniffs the rose.
  */
-import { fabric } from 'fabric';
-import TopSetting from './TopSetting';
-import { MouseMethod } from './js/MouseMethod';
-import { DrawMethods } from './js/DrawMethods';
-import { PolygonMethods } from './js/PolygonMethods';
+import { fabric } from 'fabric'
+import TopSetting from './TopSetting'
+import { MouseMethod } from './js/MouseMethod'
+import { DrawMethods } from './js/DrawMethods'
+import { PolygonMethods } from './js/PolygonMethods'
 export default {
   name: 'Canvas',
   components: { TopSetting },
@@ -66,7 +66,7 @@ export default {
       line: {},
       /** 属性参数 */
       attr: {}
-    };
+    }
   },
 
   mounted() {
@@ -77,22 +77,22 @@ export default {
      */
     this.canvas = this.__canvas = new fabric.Canvas('c', {
       stopContextMenu: true,
-      fireRightClick: true,
-    });
+      fireRightClick: true
+    })
     /** canvas 背景颜色 */
-    this.canvas.backgroundColor = 'rgb(0, 0, 0,0.05)';
-    this.canvas.setWidth(this.width);
-    this.canvas.setHeight(this.height);
+    this.canvas.backgroundColor = 'rgb(0, 0, 0,0.05)'
+    this.canvas.setWidth(this.width)
+    this.canvas.setHeight(this.height)
     /** 监听 canvas 事件 */
-    this.canvas.on('mouse:down', this.mousedown);
-    this.canvas.on('mouse:up', this.mouseup);
-    this.canvas.on('mouse:move', this.mousemove);
-    this.canvas.on('mouse:wheel', this.mousewheel);
+    this.canvas.on('mouse:down', this.mousedown)
+    this.canvas.on('mouse:up', this.mouseup)
+    this.canvas.on('mouse:move', this.mousemove)
+    this.canvas.on('mouse:wheel', this.mousewheel)
     /** 元素删除，监听键盘 delete 点按事件 */
-    document.onkeydown = (e) => {
-      if (e.keyCode === 46) this.deleteItem();
-    };
-    this.init();
+    document.onkeydown = e => {
+      if (e.keyCode === 46) this.deleteItem()
+    }
+    this.init()
   },
 
   methods: {
@@ -101,73 +101,70 @@ export default {
     ...PolygonMethods,
     /** 实例初始化 */
     init() {
-      if (!this.canvas) return;
+      if (!this.canvas) return
       fabric.Image.fromURL(
         require('@/assets/crtImg/canvas.jpg'),
-        (img) => {
+        img => {
           img.set({
             scaleX: this.canvas.width / img.width,
-            scaleY: this.canvas.height / img.height,
-          });
-          this.canvas.setBackgroundImage(
-            img,
-            this.canvas.renderAll.bind(this.canvas)
-          );
-          this.canvas.renderAll();
+            scaleY: this.canvas.height / img.height
+          })
+          this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas))
+          this.canvas.renderAll()
         },
         { crossOrigin: 'anonymous' }
-      );
+      )
     },
     /** 图形设置 */
     handleSetting(str) {
-      console.log(str);
-      this.drawType = str;
+      console.log(str)
+      this.drawType = str
       if (str === 'pen') {
-        this.canvas.freeDrawingBrush.width = 2;
-        this.canvas.freeDrawingBrush.color = 'red';
-        this.canvas.isDrawingMode = true;
+        this.canvas.freeDrawingBrush.width = 2
+        this.canvas.freeDrawingBrush.color = 'red'
+        this.canvas.isDrawingMode = true
       } else {
-        this.canvas.isDrawingMode = false;
+        this.canvas.isDrawingMode = false
       }
     },
     /** 多边形绘制 */
     drawPolygon() {
-      this.drawType = 'polygon';
-      this.polygonMode = true;
-      this.pointArray = new Array();
-      this.lineArray = new Array();
-      this.canvas.isDrawingMode = false;
+      this.drawType = 'polygon'
+      this.polygonMode = true
+      this.pointArray = new Array()
+      this.lineArray = new Array()
+      this.canvas.isDrawingMode = false
     },
     /** 背景图导入 */
     bgImage(url) {
-      console.log('%c' + url, 'color: #2ecc71; font-size: 13px;');
-      this.$message.success('请替换路径');
+      console.log('%c' + url, 'color: #2ecc71; font-size: 13px;')
+      this.$message.success('请替换路径')
       // this.imgURL = url;
       // this.init();
     },
     /** 获取当前选中元素对象，进行删除 */
     handleDel() {
-      let obj = this.canvas.getActiveObject();
-      this.canvas.remove(obj);
-      this.canvas.renderAll();
+      let obj = this.canvas.getActiveObject()
+      this.canvas.remove(obj)
+      this.canvas.renderAll()
     },
     /** 删除实例元素 */
     deleteItem() {
-      this.canvas.getActiveObjects().map((item) => {
-        this.canvas.remove(item);
-      });
+      this.canvas.getActiveObjects().map(item => {
+        this.canvas.remove(item)
+      })
     },
     /** 保存 */
     handleSave() {
       let query = {
         id: 1,
-        ...this.canvas.toJSON(),
-      };
-      console.log(query);
-      console.log(JSON.stringify(query));
-    },
-  },
-};
+        ...this.canvas.toJSON()
+      }
+      console.log(query)
+      console.log(JSON.stringify(query))
+    }
+  }
+}
 </script>
 <style lang="css" scoped>
 .c-style {
