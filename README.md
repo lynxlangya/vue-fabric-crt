@@ -5,11 +5,6 @@
 
 
 打完收工!
+![BlijYQ.png](https://s1.ax1x.com/2020/10/27/BlijYQ.png)
 
-
-
-![](https://github.com/wangdaoo/vue-fabric-crt/src/assets/demo2.png)
-
-
-
-![](https://github.com/wangdaoo/vue-fabric-crt/src/assets/demo.png)
+![BlivWj.png](https://s1.ax1x.com/2020/10/27/BlivWj.png)
