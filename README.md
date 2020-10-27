@@ -8,8 +8,8 @@
 
 
 
-![](/Users/mars/code/vue/vue-fabric-crt/src/assets/demo2.png)
+![](src/assets/demo2.png)
 
 
 
-![](/Users/mars/code/vue/vue-fabric-crt/src/assets/demo.png)
+![](src/assets/demo.png)
